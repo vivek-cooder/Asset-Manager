@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AssetPulse // System Inventory Dashboard</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glow-bg-1"></div>
+    <div class="glow-bg-2"></div>
+
+    <div class="dashboard-container">
+        <!-- HEADER -->
+        <header class="main-header">
+            <div class="brand">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-server-pulse"></i>
+                </div>
+                <div>
+                    <h1>AssetPulse</h1>
+                    <p class="tagline">System Inventory & Security Compliance Monitor</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button id="btn-export" class="btn btn-primary">
+                    <i class="fa-regular fa-file-excel"></i> Export to Excel
+                </button>
+                <button id="btn-clear" class="btn btn-danger">
+                    <i class="fa-regular fa-trash-can"></i> Clear All
+                </button>
+            </div>
+        </header>
+
+        <!-- METRIC CARDS -->
+        <section class="metrics-grid">
+            <div class="metric-card">
+                <div class="card-icon blue">
+                    <i class="fa-solid fa-laptop"></i>
+                </div>
+                <div class="card-data">
+                    <h3 id="stat-total">0</h3>
+                    <p>Total Assets Registered</p>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="card-icon green">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div class="card-data">
+                    <h3 id="stat-trend">0</h3>
+                    <p>Trend Micro Compliant</p>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="card-icon amber">
+                    <i class="fa-solid fa-fire"></i>
+                </div>
+                <div class="card-data">
+                    <h3 id="stat-selfscan">0</h3>
+                    <p>SelfScan Installed</p>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="card-icon purple">
+                    <i class="fa-solid fa-cloud-shield"></i>
+                </div>
+                <div class="card-data">
+                    <h3 id="stat-netskope">0</h3>
+                    <p>Netskope Installed</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- MIDDLE SECTION: CHARTS & COLLECTOR CENTER -->
+        <div class="grid-two-cols">
+            <!-- Analytics -->
+            <div class="dashboard-panel panel-charts">
+                <div class="panel-header">
+                    <h2><i class="fa-solid fa-chart-pie"></i> Compliance Distribution</h2>
+                </div>
+                <div class="panel-body charts-container">
+                    <div class="chart-wrapper">
+                        <canvas id="chart-selfscan"></canvas>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="chart-trendmicro"></canvas>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="chart-netskope"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Client Script & Manual Entry -->
+            <div class="dashboard-panel panel-collector">
+                <div class="tabs-header">
+                    <button class="tab-btn active" data-tab="tab-script">
+                        <i class="fa-solid fa-terminal"></i> Client Collector Script
+                    </button>
+                    <button class="tab-btn" data-tab="tab-manual">
+                        <i class="fa-solid fa-paste"></i> Manual Upload / Paste
+                    </button>
+                </div>
+                <div class="panel-body tab-content-container">
+                    <!-- Tab 1: Collector Script -->
+                    <div id="tab-script" class="tab-pane active">
+                        <p class="tab-desc">Run this batch script on any computer across your local network or the internet to automatically scan and register its specs into this dashboard.</p>
+                        
+                        <!-- Target Endpoint Configuration -->
+                        <div class="target-config-card">
+                            <div class="target-config-header">
+                                <label for="target-server-input"><i class="fa-solid fa-globe"></i> Target Upload URL (Server Endpoint):</label>
+                                <span class="badge-status-online"><i class="fa-solid fa-circle"></i> Ready</span>
+                            </div>
+                            <div class="target-input-group">
+                                <input type="text" id="target-server-input" value="http://localhost:3000/api/upload" placeholder="e.g., http://192.168.1.50:3000/api/upload or https://asset.yourdomain.com/api/upload">
+                                <button id="btn-reset-url" class="btn btn-outline btn-sm" title="Reset to current browser address">
+                                    <i class="fa-solid fa-rotate-left"></i> Current Host
+                                </button>
+                            </div>
+                            <div class="quick-ip-chips" id="quick-ip-chips">
+                                <span class="chip-label">Quick Set:</span>
+                                <button class="ip-chip active" data-url="auto"><i class="fa-solid fa-laptop"></i> Current Browser URL</button>
+                            </div>
+                        </div>
+
+                        <div class="code-box-wrapper">
+                            <pre><code id="bat-code">@echo off
+rem Loading script...</code></pre>
+                            <button id="btn-copy-bat" class="btn-copy" title="Copy customized script">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+
+                        <div class="script-meta">
+                            <a id="btn-download-bat" href="/api/download-bat" download="collect_info.bat" class="btn btn-secondary btn-sm">
+                                <i class="fa-solid fa-download"></i> Download Pre-configured collect_info.bat
+                            </a>
+                            <span class="endpoint-indicator"><i class="fa-solid fa-circle-check"></i> Connected to: <span id="server-url">http://localhost:3000/api/upload</span></span>
+                        </div>
+                    </div>
+
+                    <!-- Tab 2: Manual upload -->
+                    <div id="tab-manual" class="tab-pane">
+                        <p class="tab-desc">Paste raw system info report output below to manually insert or update a computer profile.</p>
+                        <textarea id="manual-log-input" placeholder="Paste raw system information text here..."></textarea>
+                        <div class="textarea-actions">
+                            <button id="btn-submit-manual" class="btn btn-primary btn-sm">
+                                <i class="fa-solid fa-upload"></i> Process Log
+                            </button>
+                            <span id="manual-status-message"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXCEL SHEET VIEW -->
+        <section class="dashboard-panel panel-table">
+            <div class="table-toolbar">
+                <div class="table-info">
+                    <h2><i class="fa-solid fa-table-list"></i> Systems Inventory</h2>
+                    <span class="count-badge" id="assets-count">0 items</span>
+                </div>
+                <div class="table-actions">
+                    <!-- Search -->
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="table-search" placeholder="Search systems, serials, SIDs...">
+                    </div>
+                    <!-- Columns Filter Button -->
+                    <div class="dropdown-container">
+                        <button class="btn btn-outline" id="btn-toggle-columns">
+                            <i class="fa-solid fa-columns"></i> Columns
+                        </button>
+                        <div class="dropdown-menu" id="column-selector-menu">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table Container -->
+            <div class="table-responsive">
+                <table class="excel-table" id="assets-table">
+                    <thead>
+                        <tr>
+                            <!-- Populated dynamically -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="100%" class="loading-state">
+                                <i class="fa-solid fa-spinner fa-spin"></i> Loading assets...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="table-pagination">
+                <span class="pagination-info" id="pagination-text">Showing 0 of 0 systems</span>
+                <div class="pagination-controls">
+                    <button class="btn-pagination" id="btn-prev" disabled><i class="fa-solid fa-chevron-left"></i></button>
+                    <div class="pagination-pages" id="pagination-pages-container">
+                        <!-- Pages buttons -->
+                    </div>
+                    <button class="btn-pagination" id="btn-next" disabled><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- DETAILS MODAL -->
+    <div id="modal-details" class="modal">
+        <div class="modal-content glass">
+            <header class="modal-header">
+                <div class="modal-title">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <div>
+                        <h2 id="modal-host-title">Host Details</h2>
+                        <span id="modal-serial-subtitle">Serial: N/A</span>
+                    </div>
+                </div>
+                <button class="btn-close-modal" id="btn-close-modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </header>
+            <div class="modal-body">
+                <div class="detail-tabs">
+                    <button class="detail-tab-btn active" data-det-tab="det-summary">Summary Info</button>
+                    <button class="detail-tab-btn" data-det-tab="det-users">User Profiles</button>
+                    <button class="detail-tab-btn" data-det-tab="det-adapters">Network Adapters</button>
+                    <button class="detail-tab-btn" data-det-tab="det-raw">Raw Log Output</button>
+                </div>
+
+                <div class="detail-tab-panes">
+                    <!-- Tab: Summary -->
+                    <div id="det-summary" class="detail-pane active">
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <label>Department</label>
+                                <span id="det-department" class="badge-dept">N/A</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Hostname</label>
+                                <span id="det-hostname">N/A</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Serial Number</label>
+                                <span id="det-serial">N/A</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Trend Micro Agent</label>
+                                <span id="det-tm-agent">N/A</span>
+                            </div>
+                            <div class="info-item">
+                                <label>TM Scan Engine</label>
+                                <span id="det-tm-engine">N/A</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Virus Scan Engine (Wide)</label>
+                                <span id="det-vse-alt">N/A</span>
+                            </div>
+                            <div class="info-item">
+                                <label>SelfScan Status</label>
+                                <span id="det-selfscan-status" class="badge">N/A</span>
+                            </div>
+                            <div class="info-item full-width">
+                                <label>SelfScan Path</label>
+                                <span id="det-selfscan-path" class="code-text">N/A</span>
+                            </div>
+                            <div class="info-item full-width">
+                                <label>SelfScan Execution Command</label>
+                                <span id="det-selfscan-cmd" class="code-text">N/A</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Model Name</label>
+                                <span id="det-model">N/A</span>
+                            </div>
+                            <div class="info-item">
+                                <label>IP Address</label>
+                                <span id="det-ip-addr">N/A</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Netskope Status</label>
+                                <span id="det-netskope-status" class="badge">N/A</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Last Report Sent</label>
+                                <span id="det-last-updated">N/A</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Sender IP</label>
+                                <span id="det-ip">N/A</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab: Users -->
+                    <div id="det-users" class="detail-pane">
+                        <div class="sub-section">
+                            <h3>User Directories Found in C:\Users</h3>
+                            <ul id="det-user-dirs" class="bullet-list">
+                                <!-- list of directories -->
+                            </ul>
+                        </div>
+                        <div class="sub-section table-wrapper">
+                            <h3>Configured Profiles in Registry</h3>
+                            <table class="sub-table">
+                                <thead>
+                                    <tr>
+                                        <th>Local Path</th>
+                                        <th>SID</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="det-user-profiles-table">
+                                    <!-- rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Tab: Network Adapters -->
+                    <div id="det-adapters" class="detail-pane">
+                        <div class="table-wrapper">
+                            <h3>Network Adapters & MAC Addresses</h3>
+                            <table class="sub-table">
+                                <thead>
+                                    <tr>
+                                        <th>Adapter Name</th>
+                                        <th>Status</th>
+                                        <th>MAC Address</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="det-adapters-table">
+                                    <!-- rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Tab: Raw -->
+                    <div id="det-raw" class="detail-pane">
+                        <pre><code id="det-raw-log-code">Loading raw log...</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Custom JS Logic -->
+    <script src="app.js"></script>
+</body>
+</html>

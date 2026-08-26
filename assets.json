@@ -1,0 +1,124 @@
+[
+  {
+    "department": "IT",
+    "hostname": "TALJ-DIT",
+    "serial_number": "1N1337063N",
+    "user_directories": [
+      "admin",
+      "Administrator",
+      "Arunvb",
+      "atharv.mhatre",
+      "DefaultAppPool",
+      "fmstaloja",
+      "Public",
+      "talj_plan",
+      "TEMP",
+      "TEMP.Font Driver Host",
+      "TEMP.Font Driver Host.000",
+      "TEMP.Font Driver Host.001",
+      "TEMP.Font Driver Host.002",
+      "TEMP.Font Driver Host.003",
+      "TEMP.Font Driver Host.004",
+      "TEMP.Font Driver Host.005",
+      "TEMP.Font Driver Host.006",
+      "TEMP.Font Driver Host.007",
+      "TEMP.Font Driver Host.008"
+    ],
+    "configured_user_profiles": [
+      {
+        "local_path": "C:\\Users\\DefaultAppPool",
+        "sid": "S-1-5-82-3006700770-424185619-1745488364-794895919-4004696415"
+      },
+      {
+        "local_path": "C:\\windows\\ServiceProfiles\\MSSQL$SQLEXPRESS",
+        "sid": "S-1-5-80-3880006512-4290199581-1648723128-3569869737-3631323133"
+      },
+      {
+        "local_path": "C:\\windows\\ServiceProfiles\\SQLTELEMETRY$BARTENDER",
+        "sid": "S-1-5-80-1421082958-2220363263-3887300755-450899232-919288563"
+      },
+      {
+        "local_path": "C:\\Users\\tljitadmin.EXIDE",
+        "sid": "S-1-5-21-553378609-2914435982-2802585094-2144"
+      },
+      {
+        "local_path": "C:\\Users\\atharv.mhatre",
+        "sid": "S-1-5-21-553378609-2914435982-2802585094-15798499"
+      },
+      {
+        "local_path": "C:\\Users\\talj_plan",
+        "sid": "S-1-5-21-553378609-2914435982-2802585094-15784388"
+      },
+      {
+        "local_path": "C:\\Users\\fmstaloja",
+        "sid": "S-1-5-21-553378609-2914435982-2802585094-15768387"
+      },
+      {
+        "local_path": "C:\\Users\\Arunvb",
+        "sid": "S-1-5-21-553378609-2914435982-2802585094-15744106"
+      },
+      {
+        "local_path": "C:\\Users\\spc-tlj",
+        "sid": "S-1-5-21-553378609-2914435982-2802585094-1267"
+      },
+      {
+        "local_path": "C:\\Users\\Administrator",
+        "sid": "S-1-5-21-3093372722-1240970998-1211795884-500"
+      },
+      {
+        "local_path": "C:\\Users\\tljitadmin",
+        "sid": "S-1-5-21-3093372722-1240970998-1211795884-1004"
+      },
+      {
+        "local_path": "C:\\Users\\admin",
+        "sid": "S-1-5-21-3093372722-1240970998-1211795884-1001"
+      },
+      {
+        "local_path": "C:\\WINDOWS\\ServiceProfiles\\NetworkService",
+        "sid": "S-1-5-20"
+      },
+      {
+        "local_path": "C:\\WINDOWS\\ServiceProfiles\\LocalService",
+        "sid": "S-1-5-19"
+      },
+      {
+        "local_path": "C:\\WINDOWS\\system32\\config\\systemprofile",
+        "sid": "S-1-5-18"
+      }
+    ],
+    "trend_micro_agent_version": "14.0",
+    "trend_micro_scan_engine": "25.560-1004",
+    "virus_scan_engine_alt": "26.530.1002",
+    "self_scan_installed": true,
+    "self_scan_status_text": "Installed",
+    "self_scan_path": "C:\\SelfScan.exe",
+    "self_scan_command": "\"C:\\SelfScan.exe\" apiKey=1003.319a8bd3a181b66f581412212dd46834.af3c218ec65c8293dc119410dddf9452 server=sdpondemand.manageengine.in",
+    "netskope_installed": true,
+    "netskope_status_text": "Installed",
+    "model_name": "HP Pro Tower 280 G9 PCI Desktop PC",
+    "ip_address": "1",
+    "network_adapters": [
+      {
+        "name": "Bluetooth Network Connection",
+        "status": "Disconnected",
+        "mac_address": "F8-54-F6-8E-AB-3A"
+      },
+      {
+        "name": "Wi-Fi",
+        "status": "Up",
+        "mac_address": "F8-54-F6-8E-AB-3B"
+      },
+      {
+        "name": "Ethernet",
+        "status": "Disconnected",
+        "mac_address": "E0-73-E7-B9-CF-97"
+      }
+    ],
+    "wifi_mac": "F8-54-F6-8E-AB-3B",
+    "ethernet_mac": "E0-73-E7-B9-CF-97",
+    "raw_log": "======================================= \n          SYSTEM INFORMATION            \n======================================= \n \nDepartment: \nIT \n--------------------------------------- \nHostname: \nTALJ-DIT\n--------------------------------------- \nSerial Number: \n1N1337063N \n--------------------------------------- \nUser Directories Found: \nadmin\nAdministrator\nArunvb\natharv.mhatre\nDefaultAppPool\nfmstaloja\nPublic\ntalj_plan\nTEMP\nTEMP.Font Driver Host\nTEMP.Font Driver Host.000\nTEMP.Font Driver Host.001\nTEMP.Font Driver Host.002\nTEMP.Font Driver Host.003\nTEMP.Font Driver Host.004\nTEMP.Font Driver Host.005\nTEMP.Font Driver Host.006\nTEMP.Font Driver Host.007\nTEMP.Font Driver Host.008\nTEMP.Font Driver Host.009\ntljitadmin\ntljitadmin.EXIDE\nUMFD-0\nUMFD-0.Font Driver Host\nUMFD-0.Font Driver Host.000\nUMFD-0.Font Driver Host.001\nUMFD-0.Font Driver Host.002\nUMFD-0.Font Driver Host.003\nUMFD-0.Font Driver Host.004\nUMFD-0.Font Driver Host.005\nUMFD-0.Font Driver Host.006\nUMFD-0.Font Driver Host.007\nUMFD-0.Font Driver Host.008\nUMFD-0.Font Driver Host.009\n--------------------------------------- \nConfigured User Profiles: \n\nLocalPath                                         SID                                                            \n---------                                         ---                                                            \nC:\\Users\\DefaultAppPool                           S-1-5-82-3006700770-424185619-1745488364-794895919-4004696415  \nC:\\windows\\ServiceProfiles\\MSSQL$SQLEXPRESS       S-1-5-80-3880006512-4290199581-1648723128-3569869737-3631323133\nC:\\windows\\ServiceProfiles\\SQLTELEMETRY$BARTENDER S-1-5-80-1421082958-2220363263-3887300755-450899232-919288563  \nC:\\Users\\tljitadmin.EXIDE                         S-1-5-21-553378609-2914435982-2802585094-2144                  \nC:\\Users\\atharv.mhatre                            S-1-5-21-553378609-2914435982-2802585094-15798499              \nC:\\Users\\talj_plan                                S-1-5-21-553378609-2914435982-2802585094-15784388              \nC:\\Users\\fmstaloja                                S-1-5-21-553378609-2914435982-2802585094-15768387              \nC:\\Users\\Arunvb                                   S-1-5-21-553378609-2914435982-2802585094-15744106              \nC:\\Users\\spc-tlj                                  S-1-5-21-553378609-2914435982-2802585094-1267                  \nC:\\Users\\Administrator                            S-1-5-21-3093372722-1240970998-1211795884-500                  \nC:\\Users\\tljitadmin                               S-1-5-21-3093372722-1240970998-1211795884-1004                 \nC:\\Users\\admin                                    S-1-5-21-3093372722-1240970998-1211795884-1001                 \nC:\\WINDOWS\\ServiceProfiles\\NetworkService         S-1-5-20                                                       \nC:\\WINDOWS\\ServiceProfiles\\LocalService           S-1-5-19                                                       \nC:\\WINDOWS\\system32\\config\\systemprofile          S-1-5-18                                                       \n\n\n\n--------------------------------------- \nTrend Micro Component Versions: \nVirus Scan Engine: 25.560-1004 \nAgent Version: 14.0 \n--------------------------------------- \nVirus Scan Engine: \n26.530.1002\n--------------------------------------- \nSelfScan Status: \n🔥 SelfScan is INSTALLED \nPath: C:\\SelfScan.exe \nRunning Command: \n\"C:\\SelfScan.exe\" apiKey=1003.319a8bd3a181b66f581412212dd46834.af3c218ec65c8293dc119410dddf9452 server=sdpondemand.manageengine.in \n--------------------------------------- \nNetskope Status: \n🔥 Netskope is INSTALLED \n--------------------------------------- \nModel Name: \nHP Pro Tower 280 G9 PCI Desktop PC \n--------------------------------------- \nIP Address: \n1 \n--------------------------------------- \nNetwork Adapters and MAC Addresses: \n\nName                         Status       MacAddress       \n----                         ------       ----------       \nBluetooth Network Connection Disconnected F8-54-F6-8E-AB-3A\nWi-Fi                        Up           F8-54-F6-8E-AB-3B\nEthernet                     Disconnected E0-73-E7-B9-CF-97\n\n\n\n--------------------------------------- \n",
+    "last_updated": "2026-08-26 12:05:30",
+    "sender_ip": "10.11.55.68",
+    "id": "0e9924c5dc934fa8ab0668b0cd9f30db"
+  }
+]
